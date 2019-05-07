@@ -9,7 +9,7 @@ class CircularImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: store,
+      tag: store != null ? store : "",
       child: Container(
         width: 80.0,
         height: 80.0,
