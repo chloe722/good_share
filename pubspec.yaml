@@ -50,6 +50,17 @@ flutter:
     - image/spring_vagetarian.jpeg
     - image/sunmerry.jpeg
     - image/woo_bento.jpeg
+    - image/crossiant.jpeg
+    - image/macha_donut.jpeg
+    - image/salmon_rice_ball.jpg
+    - image/bento_shop.jpg
+    - image/careefour_store.jpg
+    - image/family_mart_store.jpeg
+    - image/mister_donut_shop.jpg
+    - image/spring_vagetariant_rest.jpg
+    - image/sunmerry_bakery.jpg
+    - image/vagetaian_bento.jpeg
+
 
   #    - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg

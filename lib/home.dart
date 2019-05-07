@@ -35,9 +35,7 @@ class _HomeState extends State<Home> {
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
             title: Text('Profile')
-
         ),
-
       ]),
       body: _children[_currentIndex],
     );
