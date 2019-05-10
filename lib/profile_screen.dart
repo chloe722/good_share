@@ -16,7 +16,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 110.0),
-          CircularImage(image: 'image/avatar.jpg'),
+          CircularImage(image: AssetImage('image/avatar.jpg')),
           SizedBox(height: 20.0),
           Text('Viola Cheng', style: TextStyle(fontSize: 20.0)),
           SizedBox(height: 30.0),
@@ -26,18 +26,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               LabelItem(title: 'Money saved', value: '50 \$'),
-              LabelItem(title: 'Food saved', value: '1000 g',),
-              LabelItem(title: 'GHS reduced', value: '4500 g',),
-
+              LabelItem(
+                title: 'Food saved',
+                value: '1000 g',
+              ),
+              LabelItem(
+                title: 'GHS reduced',
+                value: '4500 g',
+              ),
             ],
           )
-
         ],
       ),
     );
   }
 }
-
 
 class LabelItem extends StatelessWidget {
   LabelItem({this.title, this.value});
@@ -50,12 +53,16 @@ class LabelItem extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-        value,
-          style: TextStyle(fontSize: 25, color: Colors.grey[700], fontWeight: FontWeight.w500),
+          value,
+          style: TextStyle(
+              fontSize: 25,
+              color: Colors.grey[700],
+              fontWeight: FontWeight.w500),
         ),
         SizedBox(height: 10.0),
         Text(
-          title, style: TextStyle(fontSize: 14, color: Colors.orange[400]),
+          title,
+          style: TextStyle(fontSize: 14, color: Colors.orange[400]),
         )
       ],
     );

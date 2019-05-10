@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RectangleRoundedImage extends StatelessWidget {
-  final String image;
+  final ImageProvider image;
 
   RectangleRoundedImage({this.image});
 
@@ -13,9 +13,7 @@ class RectangleRoundedImage extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(10.0),
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(image))),
+          image: DecorationImage(fit: BoxFit.cover, image: image)),
     );
   }
 }
