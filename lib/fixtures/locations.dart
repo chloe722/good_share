@@ -16,7 +16,7 @@ final List<LocationModel> locationFixtures = [
     name: 'FamilyMart',
     logo: AssetImage('image/family_mart.png'),
     cover: AssetImage('image/family_mart_store.jpeg'),
-    geolocation: LatLng(25.026153, 121.543636),
+    geolocation: LatLng(25.025640, 121.545078),
     items: [
       ItemModel(name: 'Riceball', expiryTime: '11 : 00 : 20', remaining: 5),
     ],
