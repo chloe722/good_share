@@ -80,9 +80,7 @@ class _DataContainerState extends State<DataContainer> {
             children: <Widget>[
               Hero(
                 tag: store,
-                child: RectangleRoundedImage(image: logo)
-
-              ),
+                child: RectangleRoundedImage(image: logo, width: 100.0, height: 100.0)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
