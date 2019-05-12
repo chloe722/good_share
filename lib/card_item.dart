@@ -20,6 +20,8 @@ class CardItem extends StatefulWidget {
 }
 
 class _CardItemState extends State<CardItem> {
+  int remainNum = 0;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -34,7 +36,11 @@ class _CardItemState extends State<CardItem> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              RectangleRoundedImage(image: widget.itemImage),
+              RectangleRoundedImage(
+                image: widget.itemImage,
+                width: 100.0,
+                height: 100.0,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,20 +63,41 @@ class _CardItemState extends State<CardItem> {
                                   color: Colors.grey[700]))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: Text(
                         '\$ ${widget.discountedPrice}',
                         style: TextStyle(
                             fontSize: 16.0, fontWeight: FontWeight.w500),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
-                      child: Text(
-                        '${widget.remainNumber} left',
-                        style: TextStyle(color: Colors.red[400]),
-                      ),
-                    ),
+                    Row(
+                      children: <Widget>[
+                        //TODO figure out how to display remain number
+//                        Padding(
+//                          padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+//                          child: Text('${widget.remainNumber} left', style: TextStyle(color: Colors.red[400]),),
+//                        ),
+
+                        IconButton(
+                          icon: Icon(Icons.indeterminate_check_box,
+                              color: Colors.amber),
+                          onPressed: () {
+                            setState(() {
+                              remainNum--;
+                            });
+                          },
+                        ),
+                        Text('$remainNum'),
+                        IconButton(
+                          icon: Icon(Icons.add_box, color: Colors.amber),
+                          onPressed: () {
+                            setState(() {
+                              remainNum++;
+                            });
+                          },
+                        ),
+                      ],
+                    )
                   ],
                 ),
               )

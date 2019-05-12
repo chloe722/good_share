@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.green[500],
+        fixedColor: Colors.pink[300],
           currentIndex: _currentIndex,
           onTap: _onTabTapped,
           items: [

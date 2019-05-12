@@ -24,14 +24,12 @@ class _GoogleMapViewState extends State<GoogleMapView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     subscribe();
   }
 
   @override
   void didUpdateWidget(GoogleMapView oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     subscribe();
   }
@@ -102,6 +100,7 @@ class _GoogleMapViewState extends State<GoogleMapView> {
         markerId: MarkerId(location.name),
         position: location.geolocation,
         infoWindow: InfoWindow(title: location.name),
+        onTap: () {},
         icon: BitmapDescriptor.defaultMarkerWithHue(
             isInFocus ? BitmapDescriptor.hueRed : BitmapDescriptor.hueOrange));
   }

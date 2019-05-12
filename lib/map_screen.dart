@@ -4,9 +4,6 @@ import 'package:good_share/map.dart';
 import 'package:good_share/map_screen_bloc.dart';
 import 'package:good_share/models.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
-import 'package:rxdart/subjects.dart';
-
-import 'fixtures/locations.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -45,8 +42,6 @@ class DataContainer extends StatefulWidget {
 class _DataContainerState extends State<DataContainer> {
   @override
   Widget build(BuildContext context) {
-    final c = ScrollController();
-
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
@@ -104,11 +99,10 @@ class _DataContainerState extends State<DataContainer> {
 class LocationCard extends StatelessWidget {
   LocationCard({Key key, this.location}) : super(key: key);
 
-  LocationModel location;
+  final LocationModel location;
+
   @override
   Widget build(BuildContext context) {
-    final item = location.items.first;
-
     return Card(
       margin: EdgeInsets.only(left: 10.0, right: 20.0),
       elevation: 10.0,
@@ -125,12 +119,24 @@ class LocationCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.0),
-                  child: Text(location.name, style: TextStyle(fontSize: 18.0))),
-              Text(item.expiryTime),
-              Text(' ${item.remaining} left !',
-                  style: TextStyle(color: Colors.red[300]))
+              Hero(
+                  tag: location.name,
+                  child: RectangleRoundedImage(
+                      image: location.logo, width: 100.0, height: 100.0)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Text(location.name,
+                          style: TextStyle(fontSize: 18.0))),
+                  Text(location.items[0].expiryTime),
+                  Text(' ${location.items[0].remaining} left !',
+                      style: TextStyle(color: Colors.red[300]))
+                ],
+              )
             ],
           )
         ],
