@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:good_share/detail_screen.dart';
 import 'package:good_share/map.dart';
@@ -40,6 +42,43 @@ class DataContainer extends StatefulWidget {
 }
 
 class _DataContainerState extends State<DataContainer> {
+  final scrollController = ScrollController();
+  StreamSubscription locationChange;
+
+  subscribe() {
+    locationChange?.cancel();
+
+    locationChange =
+        widget.mapScreenBloc.locationInFocus.listen((locationIndex) {
+      if (getCurrentScrollCardIndex() != locationIndex) {
+        scrollController.animateTo(
+            getCardWidth() * (locationIndex) -
+                MediaQuery.of(context).size.width * 0.1,
+            curve: Curves.decelerate,
+            duration: Duration(milliseconds: 500));
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    subscribe();
+  }
+
+  @override
+  void didUpdateWidget(DataContainer oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    subscribe();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    locationChange?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -55,14 +94,8 @@ class _DataContainerState extends State<DataContainer> {
                 //   print('scroll update ${scrollNotification}');
                 // } else
                 if (scrollNotification is ScrollEndNotification) {
-                  final cardWidth = MediaQuery.of(context).size.width * 0.8;
-                  final n =
-                      (scrollNotification.metrics.extentBefore / cardWidth)
-                          .round();
-                  widget.mapScreenBloc.locationInFocus.add(n);
-
-                  print(
-                      'End scroll ${scrollNotification.metrics} ${scrollNotification.metrics.extentBefore} ${n}');
+                  widget.mapScreenBloc.locationInFocus
+                      .add(getCurrentScrollCardIndex());
                 }
               },
               child: StreamBuilder(
@@ -71,7 +104,7 @@ class _DataContainerState extends State<DataContainer> {
                     final List<LocationModel> locations = snapshot.data ?? [];
                     return ListView(
                         scrollDirection: Axis.horizontal,
-                        // controller: c,
+                        controller: scrollController,
                         physics: NoFlingScrollPhysics(),
                         children:
                             locations.map((item) => _dataItem(item)).toList());
@@ -93,6 +126,14 @@ class _DataContainerState extends State<DataContainer> {
         child: LocationCard(location: location),
       ),
     );
+  }
+
+  int getCurrentScrollCardIndex() {
+    return (scrollController.position.extentBefore / getCardWidth()).round();
+  }
+
+  getCardWidth() {
+    return MediaQuery.of(context).size.width * 0.8;
   }
 }
 

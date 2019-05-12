@@ -99,8 +99,11 @@ class _GoogleMapViewState extends State<GoogleMapView> {
     return Marker(
         markerId: MarkerId(location.name),
         position: location.geolocation,
-        infoWindow: InfoWindow(title: location.name),
-        onTap: () {},
+        // infoWindow: InfoWindow(title: location.name),
+        onTap: () {
+          final num = widget.mapScreenBloc.locations.value?.indexOf(location);
+          widget.mapScreenBloc.locationInFocus.add(num);
+        },
         icon: BitmapDescriptor.defaultMarkerWithHue(
             isInFocus ? BitmapDescriptor.hueRed : BitmapDescriptor.hueOrange));
   }
