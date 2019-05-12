@@ -43,6 +43,7 @@ class DataContainer extends StatefulWidget {
 
 class _DataContainerState extends State<DataContainer> {
   final scrollController = ScrollController();
+
   StreamSubscription locationChange;
 
   subscribe() {
@@ -50,7 +51,8 @@ class _DataContainerState extends State<DataContainer> {
 
     locationChange =
         widget.mapScreenBloc.locationInFocus.listen((locationIndex) {
-      if (getCurrentScrollCardIndex() != locationIndex) {
+      if (getCurrentScrollCardIndex(scrollController.position) !=
+          locationIndex) {
         scrollController.animateTo(
             getCardWidth() * (locationIndex) -
                 MediaQuery.of(context).size.width * 0.1,
@@ -68,14 +70,12 @@ class _DataContainerState extends State<DataContainer> {
 
   @override
   void didUpdateWidget(DataContainer oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     subscribe();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     locationChange?.cancel();
   }
 
@@ -94,8 +94,8 @@ class _DataContainerState extends State<DataContainer> {
                 //   print('scroll update ${scrollNotification}');
                 // } else
                 if (scrollNotification is ScrollEndNotification) {
-                  widget.mapScreenBloc.locationInFocus
-                      .add(getCurrentScrollCardIndex());
+                  widget.mapScreenBloc.locationInFocus.add(
+                      getCurrentScrollCardIndex(scrollNotification.metrics));
                 }
               },
               child: StreamBuilder(
@@ -128,8 +128,12 @@ class _DataContainerState extends State<DataContainer> {
     );
   }
 
-  int getCurrentScrollCardIndex() {
-    return (scrollController.position.extentBefore / getCardWidth()).round();
+  int getCurrentScrollCardIndex(ScrollMetrics position) {
+    if (position?.pixels != null && (position.minScrollExtent ?? -1.0) >= 0.0) {
+      return ((position.extentBefore ?? 0.0) / getCardWidth()).round();
+    } else {
+      return 0;
+    }
   }
 
   getCardWidth() {
@@ -152,9 +156,6 @@ class LocationCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Hero(
-              tag: location.name,
-              child: RectangleRoundedImage(image: location.logo)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
