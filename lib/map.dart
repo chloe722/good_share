@@ -108,25 +108,4 @@ class _GoogleMapViewState extends State<GoogleMapView> {
             isInFocus ? BitmapDescriptor.hueRed : BitmapDescriptor.hueOrange));
   }
 
-//
-//  Marker restaurantMarker8= Marker(
-//      markerId: MarkerId('restaurant8'),
-//      position: LatLng(25.034189, 121.535979),
-//      infoWindow: InfoWindow(title: 'Family Mart'),
-//      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange)
-//  );
-//  /// Defined custom marker
-//  Marker restaurantMarker9= Marker(
-//      markerId: MarkerId('restaurant9'),
-//      position: LatLng(25.0330, 121.5654),
-//      infoWindow: InfoWindow(title: ''),
-//      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange)
-//  );
-//
-//  Marker restaurantMarker10= Marker(
-//      markerId: MarkerId('restaurant10'),
-//      position: LatLng(25.034189, 121.535979),
-//      infoWindow: InfoWindow(title: 'Family Mart'),
-//      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange)
-//  );
 }

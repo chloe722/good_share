@@ -4,12 +4,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 final List<LocationModel> locationFixtures = [
   LocationModel(
-    name: 'CarreFour',
-    logo: AssetImage('image/carrefour.png'),
-    cover: AssetImage('image/careefour_store.jpg'),
+    name: 'I JY SHENG',
+    logo: AssetImage('image/yizhihsuan_logo.png'),
+    cover: AssetImage('image/dessert_banner.jpg'),
     geolocation: LatLng(25.040212, 121.530843),
     items: [
-      ItemModel(name: 'Fish', expiryTime: '10 : 00 : 20', remaining: 10),
+      ItemModel(name: 'Bread', expiryTime: '10 : 00 : 20', remaining: 10),
     ],
   ),
   LocationModel(

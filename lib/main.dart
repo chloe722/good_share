@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GoodShare',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.pinkAccent[300],
       ),
       home: Home(),
     );

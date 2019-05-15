@@ -4,6 +4,7 @@ import 'package:good_share/circular_image.dart';
 import 'package:good_share/models.dart';
 import 'package:good_share/constants.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
+import 'package:good_share/seller/brand_profile_screen.dart';
 
 class DetailScreen extends StatefulWidget {
   final LocationModel location;
@@ -48,11 +49,18 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                       ],
                     ),
-                    Positioned(
-                        top: MediaQuery.of(context).size.height * 0.21,
-                        right: MediaQuery.of(context).size.width * 0.1,
-                        child: CircularImage(
-                            label: location.name, image: location.logo)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+                          BrandProfile();
+                        }));
+                      },
+                      child: Positioned(
+                          top: MediaQuery.of(context).size.height * 0.21,
+                          right: MediaQuery.of(context).size.width * 0.1,
+                          child: CircularImage(
+                              label: location.name, image: location.logo)),
+                    ),
                   ],
                 ),
                 Padding(
