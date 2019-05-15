@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   google_maps_flutter: ^0.5.11
   rxdart: ^0.21.0
+  snaplist: 0.1.8
 
 dev_dependencies:
   flutter_test:

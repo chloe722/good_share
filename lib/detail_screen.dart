@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:good_share/card_item.dart';
 import 'package:good_share/circular_image.dart';
+import 'package:good_share/models.dart';
 import 'package:good_share/constants.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
 
 class DetailScreen extends StatefulWidget {
-  final String store;
-  final String remainNumber;
-  final String countDown;
-  final String logo;
-  final String coverImage;
+  final LocationModel location;
 
-
-  DetailScreen({this.store, this.remainNumber, this.countDown, this.logo, this.coverImage});
+  DetailScreen({Key key, @required this.location}) : super(key: key);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -23,6 +19,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final location = widget.location;
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -46,15 +44,15 @@ class _DetailScreenState extends State<DetailScreen> {
                           height: 200.0,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.cover,
-                          image: AssetImage(widget.coverImage),
+                          image: location.cover,
                         ),
                       ],
                     ),
                     Positioned(
-                      top: MediaQuery.of(context).size.height * 0.21,
-                      right: MediaQuery.of(context).size.width * 0.1,
-                      child: CircularImage(store: widget.store, image: widget.logo)
-                    ),
+                        top: MediaQuery.of(context).size.height * 0.21,
+                        right: MediaQuery.of(context).size.width * 0.1,
+                        child: CircularImage(
+                            label: location.name, image: location.logo)),
                   ],
                 ),
                 Padding(
@@ -64,18 +62,42 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non enim fringilla, sagittis ipsum sit amet, blandit velit. Vivamus quis arcu dictum leo accumsan feugiat. Maecenas sagittis egestas purus. Mauris cursus laoreet pellentesque. Mauris a tincidunt urna, in luctus diam. Duis finibus eros quis tristique blandit. Cras vel mi auctor, rutrum metus ut, volutpat arcu. Nam convallis aliquet nisi, vitae pulvinar enim semper in. Quisque porta urna at dui dapibus, id vehicula odio viverra. Donec cursus tempor blandit.\n Nam dui nulla, vulputate id congue ac, hendrerit a nisi. Praesent feugiat quis eros vitae convallis.\n Nam tincidunt mauris sodales nulla viverra sodales. Quisque ac nisi dignissim, congue magna vitae, dapibus neque. Nunc elementum sapien vitae arcu pulvinar tincidunt.')),
-                        CardItem(itemImage: Constants.salmonRiceBallImage ,itemTitle: Constants.salmonRiceBall, remainNumber: '8',originalPrice: '30',discountedPrice: '15'),
-                        CardItem(itemImage: Constants.vagetariantBentoImage ,itemTitle: Constants.vagetariantBento, remainNumber: '4',originalPrice: '120',discountedPrice: '60',),
-                        CardItem(itemImage: Constants.machaDonutImage,itemTitle: Constants.machaDonut,remainNumber: '5',originalPrice: '40', discountedPrice: '20',),
-                        CardItem(itemImage: Constants.crossiantImage, itemTitle: Constants.crossiant,remainNumber: '6',originalPrice: '35',discountedPrice: '18',)
+                          child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non enim fringilla, sagittis ipsum sit amet, blandit velit. Vivamus quis arcu dictum leo accumsan feugiat. Maecenas sagittis egestas purus. Mauris cursus laoreet pellentesque. Mauris a tincidunt urna, in luctus diam. Duis finibus eros quis tristique blandit. Cras vel mi auctor, rutrum metus ut, volutpat arcu. Nam convallis aliquet nisi, vitae pulvinar enim semper in. Quisque porta urna at dui dapibus, id vehicula odio viverra. Donec cursus tempor blandit.\n Nam dui nulla, vulputate id congue ac, hendrerit a nisi. Praesent feugiat quis eros vitae convallis.\n Nam tincidunt mauris sodales nulla viverra sodales. Quisque ac nisi dignissim, congue magna vitae, dapibus neque. Nunc elementum sapien vitae arcu pulvinar tincidunt.')),
+                      CardItem(
+                          itemImage: AssetImage(Constants.salmonRiceBallImage),
+                          itemTitle: Constants.salmonRiceBall,
+                          remainNumber: '8',
+                          originalPrice: '30',
+                          discountedPrice: '15'),
+                      CardItem(
+                        itemImage: AssetImage(Constants.vagetariantBentoImage),
+                        itemTitle: Constants.vagetariantBento,
+                        remainNumber: '4',
+                        originalPrice: '120',
+                        discountedPrice: '60',
+                      ),
+                      CardItem(
+                        itemImage: AssetImage(Constants.machaDonutImage),
+                        itemTitle: Constants.machaDonut,
+                        remainNumber: '5',
+                        originalPrice: '40',
+                        discountedPrice: '20',
+                      ),
+                      CardItem(
+                        itemImage: AssetImage(Constants.crossiantImage),
+                        itemTitle: Constants.crossiant,
+                        remainNumber: '6',
+                        originalPrice: '35',
+                        discountedPrice: '18',
+                      )
                     ],
                   ),
                 ),
-
                 Container(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                     child: SizedBox(
                       width: double.infinity,
                       height: 50.0,
@@ -85,21 +107,23 @@ class _DetailScreenState extends State<DetailScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        onPressed: (){
-                          showDialog(context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) {
-                            return PurchaseDialog(selectedItems: selectedItems);
-                          });
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return PurchaseDialog(
+                                    selectedItems: selectedItems);
+                              });
                         },
-                        child: Text('Buy', style: TextStyle(
-                          color: Colors.white
-                        ),),
+                        child: Text(
+                          'Buy',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
                 )
-
               ],
             ),
           ],
@@ -111,7 +135,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
 class PurchaseDialog extends StatefulWidget {
   final selectedItems;
-
 
   PurchaseDialog({this.selectedItems});
 
@@ -131,27 +154,33 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-
-
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(image: Constants.machaDonutImage, itemName: Constants.machaDonut, quantities: 3),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(image: Constants.salmonRiceBallImage, itemName: Constants.salmonRiceBall, quantities: 2),
+              child: SelectedItemLabel(
+                  image: AssetImage(Constants.machaDonutImage),
+                  itemName: Constants.machaDonut,
+                  quantities: 3),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(image: Constants.vagetariantBentoImage, itemName: Constants.vagetariantBento, quantities: 1),
+              child: SelectedItemLabel(
+                  image: AssetImage(Constants.salmonRiceBallImage),
+                  itemName: Constants.salmonRiceBall,
+                  quantities: 2),
             ),
-
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: SelectedItemLabel(
+                  image: AssetImage(Constants.vagetariantBentoImage),
+                  itemName: Constants.vagetariantBento,
+                  quantities: 1),
+            ),
             ButtonTheme(
               minWidth: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
                 color: Colors.amber[300],
                 child: Text('Confirm'),
                 onPressed: () {
@@ -167,7 +196,7 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
 }
 
 class SelectedItemLabel extends StatelessWidget {
-  final String image;
+  final ImageProvider image;
   final String itemName;
   final int quantities;
 
@@ -175,14 +204,16 @@ class SelectedItemLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Row(
+    return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-
           RectangleRoundedImage(image: image, width: 35.0, height: 35.0),
           SizedBox(width: 20.0),
-          Text('$quantities $itemName', style: TextStyle(fontSize: 18.0),),
+          Text(
+            '$quantities $itemName',
+            style: TextStyle(fontSize: 18.0),
+          ),
         ]);
   }
 }
