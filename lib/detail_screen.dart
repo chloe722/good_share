@@ -3,6 +3,7 @@ import 'package:good_share/card_item.dart';
 import 'package:good_share/circular_image.dart';
 import 'package:good_share/models.dart';
 import 'package:good_share/constants.dart';
+import 'package:good_share/purchase_success_dialog.dart';
 import 'package:good_share/ratingbar.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
 import 'package:good_share/seller/brand_profile_screen.dart';
@@ -227,6 +228,10 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                   itemName: Constants.vagetariantBento,
                   quantities: 1),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Text('Total: 50\$', style: TextStyle(fontSize: 20.0),),
+            ),
             ButtonTheme(
               minWidth: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.all(8.0),
@@ -234,9 +239,17 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 color: Colors.amber[300],
+                textColor: Colors.grey[700],
                 child: Text('Confirm'),
                 onPressed: () {
-                  print(' Confirm');
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return PurchaseSuccessDialog();
+                      });
+
                 },
               ),
             )
@@ -246,6 +259,9 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
     );
   }
 }
+
+
+
 
 class SelectedItemLabel extends StatelessWidget {
   final ImageProvider image;

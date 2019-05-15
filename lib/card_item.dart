@@ -72,12 +72,6 @@ class _CardItemState extends State<CardItem> {
                     ),
                     Row(
                       children: <Widget>[
-                        //TODO figure out how to display remain number
-//                        Padding(
-//                          padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
-//                          child: Text('${widget.remainNumber} left', style: TextStyle(color: Colors.red[400]),),
-//                        ),
-
                         IconButton(
                           icon: Icon(Icons.indeterminate_check_box,
                               color: Colors.amber),
