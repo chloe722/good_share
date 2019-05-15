@@ -26,7 +26,7 @@ class _CardItemState extends State<CardItem> {
   Widget build(BuildContext context) {
     return Card(
         margin:
-            EdgeInsets.only(top: 30.0, left: 20.0, right: 20.0, bottom: 10.0),
+            EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0, bottom: 10.0),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         elevation: 8.0,

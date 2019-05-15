@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:good_share/circular_image.dart';
 import 'package:good_share/constants.dart';
+import 'package:good_share/review.dart';
+import 'package:good_share/seller/seller_profile_screen.dart';
 
 class BrandProfile extends StatelessWidget {
   @override
@@ -15,14 +17,12 @@ class BrandProfile extends StatelessWidget {
           children: <Widget>[
             Column(
               mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Stack(
                   overflow: Overflow.visible,
                   children: <Widget>[
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         Image(
                           height: 200.0,
@@ -30,8 +30,35 @@ class BrandProfile extends StatelessWidget {
                           fit: BoxFit.cover,
                           image: AssetImage('image/dessert_banner.jpg'),
                         ),
+
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding:
+                            EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                            child: SizedBox(
+                              height: 40.0,
+                              child: RaisedButton(
+                                splashColor: Colors.white,
+                                color: Colors.pink[300],
+                                textColor: Colors.black87,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => OwnerProfile()));
+                                },
+                                child: Text(
+                                  'Who is the owner?',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
+
                     Positioned(
                         top: MediaQuery.of(context).size.height * 0.21,
                         right: MediaQuery.of(context).size.width * 0.1,
@@ -41,16 +68,45 @@ class BrandProfile extends StatelessWidget {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.white,
-                              image: DecorationImage(fit: BoxFit.cover, image: AssetImage('yizhihsuan_logo.png'))),
+                              image: DecorationImage(fit: BoxFit.cover, image: AssetImage('image/yizhihsuan_logo.png'))),
                         )),
                   ],
                 ),
-                Text ('Brand Story'),
-                Text (Constants.brand_story),
-                Text(Constants.brand_achievement),
-                Text(Constants.brand_media_report),
+
               ],
             ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text('Story', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text (Constants.brand_story),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text(Constants.brand_achievement),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text('Media report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+              child: Text(Constants.brand_media_report),
+            ),
+
+            ReviewCard(customerName: 'Jason', review: 'Delicious baked goods Stopped for a delicious Chinese style baked good, had a chocolate and walnut twisted bun which was unbelievably good. Service wasn\'t great and the place itself isn\'t particularly nice, but more than worth putting up with for the food.'),
+            ReviewCard(customerName: 'Jessica',review: 'Masters of Pastry Making\nThis pastry shop tops a French patisserie! Not only do the pastries and cakes look amazing-elegant, they are absolutely scrumptious. Their prices are of another era.\n We were a party of two and left the shop with three large bags of assorted pastries and spent no more than 0!!!You can taste the goodness and freshness of every single ingredient because they pride themselves on using very little sugar and you can tell. Love it, love it, love it!'),
+            ReviewCard(customerName: 'Maria',review: 'Awesome\nAwesome stuff you cant find most places, prices are good - they have these wonderful huge taro mochi and different steamed buns, like roast pork and red bean - they also have more western style sweets but I mainly go for the specialty stuff!'),
+            ReviewCard(customerName: 'Jacky',review: 'Good Chinese bakery!\nFun and hopping Chinatown bakery with all the good Chinese baked goods you\'d want as well as western goods (you know, cakes, eclairs, etc.) This place hit the sweet spot us after a dim sum brunch - and the chocolate eclair that I had was just sweet enough, a nice light choux pastry that floated on air. Next time, I\'m hitting this place BEFORE dim sum so that I can cave into the temptation to buy one of everything before I fill up too much!'),
+            ReviewCard(customerName: 'Shawn',review: 'Cheap, delicious Egg tarts and Japanese cheesecake amazing. Hot Horlicks was nice too. No wifi or toilets but there\'s very basic seating.'),
+            ReviewCard(customerName: 'Zac',review: 'Good Options and Good Price The food here is delicious and come at a very reasonable price. They have desserts and then also meat filled pastries along with their drinks options. Everything is between 1-5 so it is extremely nice for a quick bite.'),
           ],
         ),
       ),
