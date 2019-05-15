@@ -27,6 +27,7 @@ dependencies:
   rxdart: ^0.21.0
   snaplist: 0.1.8
   signature: 2.0.0
+  smooth_star_rating: 1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +66,8 @@ flutter:
     - image/vagetaian_bento.jpeg
     - image/yizhihsuan_logo.png
     - image/dessert_banner.jpg
+    - image/japan_women.png
+
 
 
   #    - images/a_dot_burr.jpeg

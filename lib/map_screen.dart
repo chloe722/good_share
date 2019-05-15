@@ -156,29 +156,24 @@ class LocationCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Hero(
+              tag: location.name,
+              child: RectangleRoundedImage(
+                  image: location.logo, width: 100.0, height: 100.0)),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Hero(
-                  tag: location.name,
-                  child: RectangleRoundedImage(
-                      image: location.logo, width: 100.0, height: 100.0)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(location.name,
-                          style: TextStyle(fontSize: 18.0))),
-                  Text(location.items[0].expiryTime),
-                  Text(' ${location.items[0].remaining} left !',
-                      style: TextStyle(color: Colors.red[300]))
-                ],
-              )
+              Text(location.name,
+                  style: TextStyle(fontSize: 18.0)),
+              Text(location.items[0].expiryTime),
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Text('500ft away'),
+              ),
+              Text(' ${location.items[0].remaining} left !',
+                  style: TextStyle(color: Colors.red[400], fontSize: 18.0))
             ],
           )
         ],

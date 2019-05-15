@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:good_share/constants.dart';
 
-class BrandProfile extends StatelessWidget {
+class OwnerProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,24 +12,39 @@ class BrandProfile extends StatelessWidget {
           primary: true,
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+            SizedBox(height: 60.0),
+            Container(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
                   Container(
-                  width: 80.0,
-                  height: 80.0,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      image: DecorationImage(fit: BoxFit.cover, image: AssetImage('japan_women.png'))),
-                ),
-                Text ('Owner Story'),
-                Text (Constants.owner_story),
-                Text(Constants.owner_achievement),
-                Text(Constants.owner_media_report),
-              ],
+                    width: 130.0,
+                    height: 130.0,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage('image/japan_women.png'))),
+                  ),
+                  Text ('Emily', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text (Constants.owner_story),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  ),
+                  Text(Constants.owner_achievement),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Media Report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  ),
+                  Text(Constants.owner_media_report),
+                ],
+              ),
             ),
           ],
         ),

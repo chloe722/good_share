@@ -3,8 +3,11 @@ import 'package:good_share/card_item.dart';
 import 'package:good_share/circular_image.dart';
 import 'package:good_share/models.dart';
 import 'package:good_share/constants.dart';
+import 'package:good_share/purchase_success_dialog.dart';
+import 'package:good_share/ratingbar.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
 import 'package:good_share/seller/brand_profile_screen.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DetailScreen extends StatefulWidget {
   final LocationModel location;
@@ -49,29 +52,70 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
-                          BrandProfile();
-                        }));
-                      },
-                      child: Positioned(
-                          top: MediaQuery.of(context).size.height * 0.21,
-                          right: MediaQuery.of(context).size.width * 0.1,
-                          child: CircularImage(
-                              label: location.name, image: location.logo)),
-                    ),
+
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.28,
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile()));
+                        },
+                        child: Row(
+                          children: <Widget>[
+                            RatingBar(),
+                            Text('(134)')
+                          ],
+                        ),
+                      )
+                  ),
+
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.33,
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.map, color: Colors.green[400]),
+                          SizedBox(width: 10.0,),
+                          Text('No. 107, Section 3, Roosevelt Road,\n Daan District, Taipei, Taiwan'),
+
+                        ],
+                      )
+                  ),
+
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.40,
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.phone, color: Colors.green[400],),
+                          SizedBox(width: 10.0,),
+                          Text('+886-886-889')
+
+                        ],
+                      )
+                  ),
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.21,
+                      right: MediaQuery.of(context).size.width * 0.1,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile()
+                          ));
+                        },
+                        child: CircularImage(
+                            label: location.name, image: location.logo),
+                      )),
+
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 40.0),
+                  padding: const EdgeInsets.only(top: 140.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
                           child: Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non enim fringilla, sagittis ipsum sit amet, blandit velit. Vivamus quis arcu dictum leo accumsan feugiat. Maecenas sagittis egestas purus. Mauris cursus laoreet pellentesque. Mauris a tincidunt urna, in luctus diam. Duis finibus eros quis tristique blandit. Cras vel mi auctor, rutrum metus ut, volutpat arcu. Nam convallis aliquet nisi, vitae pulvinar enim semper in. Quisque porta urna at dui dapibus, id vehicula odio viverra. Donec cursus tempor blandit.\n Nam dui nulla, vulputate id congue ac, hendrerit a nisi. Praesent feugiat quis eros vitae convallis.\n Nam tincidunt mauris sodales nulla viverra sodales. Quisque ac nisi dignissim, congue magna vitae, dapibus neque. Nunc elementum sapien vitae arcu pulvinar tincidunt.')),
+                              'Hello, are you fell sleeping? Get some cake and coffee for happiness! You can now rescue some of bread and gorgeous cakes.')),
                       CardItem(
                           itemImage: AssetImage(Constants.salmonRiceBallImage),
                           itemTitle: Constants.salmonRiceBall,
@@ -112,6 +156,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       child: RaisedButton(
                         splashColor: Colors.white,
                         color: Colors.green[400],
+                        textColor: Colors.black87,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -183,6 +228,10 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                   itemName: Constants.vagetariantBento,
                   quantities: 1),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Text('Total: 50\$', style: TextStyle(fontSize: 20.0),),
+            ),
             ButtonTheme(
               minWidth: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.all(8.0),
@@ -190,9 +239,17 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 color: Colors.amber[300],
+                textColor: Colors.grey[700],
                 child: Text('Confirm'),
                 onPressed: () {
-                  print(' Confirm');
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return PurchaseSuccessDialog();
+                      });
+
                 },
               ),
             )
@@ -202,6 +259,9 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
     );
   }
 }
+
+
+
 
 class SelectedItemLabel extends StatelessWidget {
   final ImageProvider image;
