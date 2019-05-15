@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:good_share/map_screen.dart';
 import 'package:good_share/profile_screen.dart';
 
-class Home extends StatefulWidget {
+class BuyerScreen extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _BuyerScreenState createState() => _BuyerScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _BuyerScreenState extends State<BuyerScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     MapScreen(),
