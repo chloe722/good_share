@@ -7,7 +7,6 @@ import 'package:good_share/purchase_success_dialog.dart';
 import 'package:good_share/ratingbar.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
 import 'package:good_share/seller/brand_profile_screen.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class DetailScreen extends StatefulWidget {
   final LocationModel location;

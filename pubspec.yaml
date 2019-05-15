@@ -26,7 +26,7 @@ dependencies:
   google_maps_flutter: ^0.5.11
   rxdart: ^0.21.0
   snaplist: 0.1.8
-  smooth_star_rating: 1.0.2
+  signature: 2.0.0
 
 dev_dependencies:
   flutter_test:

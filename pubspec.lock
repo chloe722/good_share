@@ -95,18 +95,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.21.0"
+  signature:
+    dependency: "direct main"
+    description:
+      name: signature
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.99"
-  smooth_star_rating:
-    dependency: "direct main"
-    description:
-      name: smooth_star_rating
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.2"
   snaplist:
     dependency: "direct main"
     description:
