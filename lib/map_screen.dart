@@ -197,7 +197,4 @@ class NoFlingScrollPhysics extends ScrollPhysics {
   @override
   double get minFlingVelocity => 99999.0;
 
-  // @override
-  // double get minFlingDistance => 99999.0;
-
 }
