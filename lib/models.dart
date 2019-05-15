@@ -12,14 +12,47 @@ class LocationModel {
 }
 
 class ItemModel {
-  ItemModel({this.name, this.remaining, this.expiryTime});
-  String name;
-  String expiryTime;
-  int remaining;
+  ItemModel({this.name, this.remaining, this.expiryTime, this.price});
+  final String name;
+  final String expiryTime;
+  final int remaining;
+  final double price;
 }
 
 class GeolocationModel {
   GeolocationModel(this.lat, this.lon);
   double lat;
   double lon;
+}
+
+class OrderModel {
+  OrderModel(
+      {@required this.number,
+      @required this.location,
+      @required this.items,
+      this.collectionTime});
+
+  final String number;
+  final LocationModel location;
+  final List<OrderItemModel> items;
+  final DateTime collectionTime;
+
+  int get quantity {
+    return items
+        .map((item) => item.quantity)
+        .reduce((total, value) => total + value);
+  }
+
+  double get total {
+    return items
+        .map((item) => item.item.price * item.quantity)
+        .reduce((total, value) => total + value);
+  }
+}
+
+class OrderItemModel {
+  final ItemModel item;
+  final int quantity;
+
+  OrderItemModel({this.item, this.quantity});
 }
