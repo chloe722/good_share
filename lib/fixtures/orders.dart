@@ -38,20 +38,24 @@ final List<OrderModel> ordersFixtures = [
             image: 'image/cookie.jpg'),
         quantity: 2),
   ]),
-  OrderModel(location: location, number: '1010', collectionTime: null, items: [
-    OrderItemModel(
-        item: ItemModel(
-            name: 'Pinapple',
-            price: 10.0,
-            expiryTime: '10 : 00 : 20',
-            remaining: 10,
-            image: 'image/pianapple.jpg'),
-        quantity: 2)
-  ]),
   OrderModel(
       location: location,
       number: '1010',
-      collectionTime: DateTime.now(),
+      collectionTime: DateTime.now().subtract(Duration(hours: 2)),
+      items: [
+        OrderItemModel(
+            item: ItemModel(
+                name: 'Pinapple',
+                price: 10.0,
+                expiryTime: '10 : 00 : 20',
+                remaining: 10,
+                image: 'image/pianapple.jpg'),
+            quantity: 2)
+      ]),
+  OrderModel(
+      location: location,
+      number: '1009',
+      collectionTime: DateTime.now().subtract(Duration(hours: 3, minutes: 33)),
       items: [
         OrderItemModel(
             item: ItemModel(
@@ -68,8 +72,9 @@ final List<OrderModel> ordersFixtures2 = List()
   ..add(
     OrderModel(
         location: location,
-        number: '1010',
+        number: '1012',
         collectionTime: null,
+        isNewOrder: true,
         items: [
           OrderItemModel(
               item: ItemModel(
