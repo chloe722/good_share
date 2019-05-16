@@ -34,19 +34,19 @@ class OwnerProfile extends StatelessWidget {
                   Text ('Emily', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
 
 
-                  Padding(
+                  isSellerView ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
                     child: Row(
                       children: <Widget>[
                         Text('Write your story', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
                         SizedBox(width: 5.0),
-                        isSellerView? IconButton(
+                        IconButton(
                           icon: Icon(Icons.edit, color: Colors.pink[400]),
                           onPressed: (){print('editing');},
-                        ) : Container(),
+                        ),
                       ],
                     ),
-                  ),
+                  ) : Container(),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
                     child: Text (Constants.owner_story),

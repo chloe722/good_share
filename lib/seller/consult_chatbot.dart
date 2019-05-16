@@ -36,6 +36,7 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
     );
   }
 
+//  https://www.eastwestcenter.org/professional-development/seminars-journalism-programs/changing-faces-womens-leadership-seminar
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +48,54 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),
           child: _buildTextComposer(),
         ),
-        BotMessenging(messenge: 'No probram,anything else I can help you?', width: 150.0,),
+        OptionsBar(),
+        BotMessenging(messenge: 'No probram,anything else I can help you?', width: 150.0),
         UserMessenging(messenge: 'Thank you', width: 100.0,),
         BotMessenging(messenge: 'Here is the course I can find for you:\n https://alison.com/tag/accounting', width: 200.0,),
         UserMessenging(messenge: 'I\m looking for accounting course for starting business', width: 200.0,),
         BotMessenging(messenge: 'Hi, what can I help you?', width: 170.0,),
         UserMessenging(messenge: 'Hi', width: 100.0,),
-//        UserMessenging(messenge: 'Hi'),
 
       ],
     );
   }
 }
+
+class OptionsBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          OptionItem(title: 'Workshop / Course for women'),
+          OptionItem(title: 'Mentorship'),
+          OptionItem(title: 'Loan for microbusiness'),
+          OptionItem(title: 'Community'),
+        ],
+      ),
+    );
+  }
+}
+
+class OptionItem extends StatelessWidget {
+  final String title;
+
+  OptionItem({this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlineButton(
+      child: Text('$title'),
+      borderSide: BorderSide(color: Colors.blue[400]),
+      onPressed: () {},
+
+    );
+  }
+}
+
+
 
 
 class BotMessenging extends StatelessWidget {
