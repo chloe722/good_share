@@ -26,7 +26,7 @@ class _DetailScreenState extends State<DetailScreen> {
     final location = widget.location;
 
     return Scaffold(
-    
+
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
