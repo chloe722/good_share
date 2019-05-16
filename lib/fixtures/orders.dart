@@ -69,6 +69,7 @@ final List<OrderModel> ordersFixtures = [
 ];
 
 final List<OrderModel> ordersFixtures2 = List()
+  ..addAll(ordersFixtures)
   ..add(
     OrderModel(
         location: location,
@@ -84,5 +85,4 @@ final List<OrderModel> ordersFixtures2 = List()
                   remaining: 10),
               quantity: 2)
         ]),
-  )
-  ..addAll(ordersFixtures);
+  );
