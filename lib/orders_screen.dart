@@ -98,7 +98,6 @@ class OrderItem extends StatelessWidget {
           style:
               TextStyle(fontWeight: FontWeight.bold, color: Colors.redAccent));
     }
-    return null;
   }
 }
 

@@ -28,6 +28,7 @@ dependencies:
   snaplist: 0.1.8
   signature: 2.0.0
   flutter_charts: 0.1.10
+  share: 0.6.1+1
   intl:
 
 dev_dependencies:
