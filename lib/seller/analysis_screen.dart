@@ -34,21 +34,23 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      RaisedButton(
+                      RaisedButton.icon(
                         onPressed: () {
                           //TODO export CSV
                         },
                         color: Colors.amber[300],
                         textColor: Colors.grey[700],
-                        child: Text('Export CSV'),
+                        icon: Icon(Icons.attach_file),
+                        label: Text('Sales data csv'),
                       ),
-                      RaisedButton(
+                      RaisedButton.icon(
                         onPressed: () {
                           //TODO export CSV
                         },
                         color: Colors.pink[200],
                         textColor: Colors.grey[700],
-                        child: Text('Export profile pdf'),
+                        icon: Icon(Icons.picture_as_pdf),
+                        label: Text('Bussiness Profile'),
                       )
                     ],
                   ),
