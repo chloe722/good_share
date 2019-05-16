@@ -28,6 +28,7 @@ dependencies:
   snaplist: 0.1.8
   signature: 2.0.0
   flutter_charts: 0.1.10
+  share: 0.6.1+1
   intl:
   charts_flutter:
 
@@ -79,6 +80,7 @@ flutter:
     - image/signature.png
     - image/chatbot.png
     - image/logo.png
+    - image/qr_code.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

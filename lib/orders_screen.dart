@@ -134,7 +134,6 @@ class _OrderItemState extends State<OrderItem> {
           style:
               TextStyle(fontWeight: FontWeight.bold, color: Colors.redAccent));
     }
-    return null;
   }
 }
 

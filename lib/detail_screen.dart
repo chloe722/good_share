@@ -7,6 +7,7 @@ import 'package:good_share/purchase_success_dialog.dart';
 import 'package:good_share/ratingbar.dart';
 import 'package:good_share/rectangle_rounded_image.dart';
 import 'package:good_share/seller/brand_profile_screen.dart';
+import 'package:share/share.dart';
 
 class DetailScreen extends StatefulWidget {
   final LocationModel location;
@@ -25,6 +26,7 @@ class _DetailScreenState extends State<DetailScreen> {
     final location = widget.location;
 
     return Scaffold(
+
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -179,6 +181,17 @@ class _DetailScreenState extends State<DetailScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+class ShareButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.pink[100]),
+      child: IconButton(icon: Icon(Icons.share, color: Colors.white,), onPressed: (){
+        Share.share('check out my website https://example.com');
+      }),
     );
   }
 }

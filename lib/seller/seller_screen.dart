@@ -16,7 +16,7 @@ class _SellerScreenState extends State<SellerScreen> {
     OrdersScreen(),
     AnalysisScreen(),
     BrandProfile(isSellerView: true),
-    OwnerProfile(),
+    OwnerProfile(isSellerView: true),
     ConsultChatbot(),
   ];
 

@@ -50,7 +50,7 @@ class BrandProfile extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => OwnerProfile()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => OwnerProfile(isSellerView: false)));
                                 },
                                 child: Text(
                                   'Who is the owner?',

@@ -33,6 +33,7 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
       messenge: 'No probram,anything else I can help you?',
       width: 150.0,
     ),
+    OptionsBar()
   ];
   final List<Widget> messages = [];
 
@@ -86,6 +87,63 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
           child: _buildTextComposer(),
         )
       ]..addAll(messages),
+    );
+  }
+}
+
+class OptionsBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: OptionItem(title: 'Workshop / Course for women'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: OptionItem(title: 'Mentorship'),
+                ),
+              ],
+            ),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: OptionItem(title: 'Loan for microbusiness'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: OptionItem(title: 'Community'),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OptionItem extends StatelessWidget {
+  final String title;
+
+  OptionItem({this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlineButton(
+      child: Text('$title'),
+      borderSide: BorderSide(color: Colors.blue[400]),
+      onPressed: () {},
     );
   }
 }
