@@ -12,7 +12,8 @@ class LocationModel {
 }
 
 class ItemModel {
-  ItemModel({this.name, this.remaining, this.expiryTime, this.price, this.image});
+  ItemModel(
+      {this.name, this.remaining, this.expiryTime, this.price, this.image});
   final String name;
   final String expiryTime;
   final int remaining;
@@ -31,12 +32,14 @@ class OrderModel {
       {@required this.number,
       @required this.location,
       @required this.items,
-      this.collectionTime});
+      this.collectionTime,
+      this.isNewOrder});
 
   final String number;
   final LocationModel location;
   final List<OrderItemModel> items;
   final DateTime collectionTime;
+  final bool isNewOrder;
 
   int get quantity {
     return items
