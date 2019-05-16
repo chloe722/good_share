@@ -34,16 +34,29 @@ class OwnerProfile extends StatelessWidget {
                     child: Text (Constants.owner_story),
                   ),
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0, left: 15.0, bottom: 8.0),
+                      child: Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                    ),
                   ),
-                  Text(Constants.owner_achievement),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Media Report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Align(
+                        alignment: Alignment.centerLeft,child: Text(Constants.owner_achievement)),
                   ),
-                  Text(Constants.owner_media_report),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30.0, left: 15.0, bottom: 8.0),
+                      child: Text('Media Report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Align(alignment: Alignment.centerLeft,child: Text(Constants.owner_media_report)),
+                  ),
                 ],
               ),
             ),

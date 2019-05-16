@@ -70,7 +70,7 @@ class BotMessenging extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, bottom: 10.0),
+      padding: const EdgeInsets.only(left: 15.0, bottom: 15.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -80,7 +80,7 @@ class BotMessenging extends StatelessWidget {
               Container(
                 width: 60.0,
                 height: 60.0,
-                decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage('image/support.png'), fit: BoxFit.cover)),
+                decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage('image/chatbot.png'), fit: BoxFit.cover)),
               ),
               Text('Support')
             ],

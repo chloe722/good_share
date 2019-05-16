@@ -53,7 +53,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
 
                   Positioned(
-                      top: MediaQuery.of(context).size.height * 0.28,
+                      top: MediaQuery.of(context).size.height * 0.29,
                       left: MediaQuery.of(context).size.width * 0.05,
                       child: GestureDetector(
                         onTap: () {
@@ -69,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
 
                   Positioned(
-                      top: MediaQuery.of(context).size.height * 0.33,
+                      top: MediaQuery.of(context).size.height * 0.35,
                       left: MediaQuery.of(context).size.width * 0.05,
                       child: Row(
                         children: <Widget>[
@@ -81,7 +81,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
 
                   Positioned(
-                      top: MediaQuery.of(context).size.height * 0.40,
+                      top: MediaQuery.of(context).size.height * 0.41,
                       left: MediaQuery.of(context).size.width * 0.05,
                       child: Row(
                         children: <Widget>[
@@ -111,25 +111,25 @@ class _DetailScreenState extends State<DetailScreen> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
+                          padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 25.0),
                           child: Text(
-                              'Hello, are you fell sleeping? Get some cake and coffee for happiness! You can now rescue some of bread and gorgeous cakes.')),
+                              'Hey guys! Chop chop! hurry up! Come and save the food, save your pocket! You can now rescue some of bread and gorgeous cakes.')),
                       CardItem(
-                          itemImage: AssetImage(Constants.salmonRiceBallImage),
-                          itemTitle: Constants.salmonRiceBall,
+                          itemImage: AssetImage(Constants.choco_pinapple),
+                          itemTitle: Constants.chocoPianaappleCake,
                           remainNumber: '8',
                           originalPrice: '30',
                           discountedPrice: '15'),
                       CardItem(
-                        itemImage: AssetImage(Constants.vagetariantBentoImage),
-                        itemTitle: Constants.vagetariantBento,
+                        itemImage: AssetImage(Constants.mooncake),
+                        itemTitle: Constants.mooncakeTitle,
                         remainNumber: '4',
                         originalPrice: '120',
                         discountedPrice: '60',
                       ),
                       CardItem(
-                        itemImage: AssetImage(Constants.machaDonutImage),
-                        itemTitle: Constants.machaDonut,
+                        itemImage: AssetImage(Constants.pianapple),
+                        itemTitle: Constants.pineappleTitle,
                         remainNumber: '5',
                         originalPrice: '40',
                         discountedPrice: '20',
@@ -153,8 +153,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       height: 50.0,
                       child: RaisedButton(
                         splashColor: Colors.white,
-                        color: Colors.green[400],
-                        textColor: Colors.black87,
+                        color: Colors.amber[300],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -169,7 +168,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         },
                         child: Text(
                           'Buy',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
                     ),
@@ -200,57 +199,62 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(
-                  image: AssetImage(Constants.machaDonutImage),
-                  itemName: Constants.machaDonut,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Center(child: Text('Are these correct? ', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500, color: Colors.grey[700]),)),
+              SizedBox(height: 30.0),
+              SelectedItemLabel(
+                  image: AssetImage(Constants.mooncake),
+                  itemName: Constants.mooncakeTitle,
                   quantities: 3),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(
-                  image: AssetImage(Constants.salmonRiceBallImage),
-                  itemName: Constants.salmonRiceBall,
+              SizedBox(height: 15.0),
+
+              SelectedItemLabel(
+                  image: AssetImage(Constants.choco_pinapple),
+                  itemName: Constants.chocoPianaappleCake,
                   quantities: 2),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: SelectedItemLabel(
-                  image: AssetImage(Constants.vagetariantBentoImage),
-                  itemName: Constants.vagetariantBento,
+              SizedBox(height: 15.0),
+
+              SelectedItemLabel(
+                  image: AssetImage(Constants.pianapple),
+                  itemName: Constants.pineappleTitle,
                   quantities: 1),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Text('Total: 50\$', style: TextStyle(fontSize: 20.0),),
-            ),
-            ButtonTheme(
-              minWidth: MediaQuery.of(context).size.width * 0.5,
-              padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                color: Colors.amber[300],
-                textColor: Colors.grey[700],
-                child: Text('Confirm'),
-                onPressed: () {
-                  Navigator.pop(context);
-                  showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (BuildContext context) {
-                        return PurchaseSuccessDialog();
-                      });
-                },
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  child: Text('Total: 50\$', style: TextStyle(fontSize: 20.0),),
+                ),
               ),
-            )
-          ],
+              Center(
+                child: ButtonTheme(
+                  minWidth: MediaQuery.of(context).size.width * 0.5,
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    color: Colors.amber[300],
+                    textColor: Colors.grey[700],
+                    child: Text('Yup!'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (BuildContext context) {
+                            return PurchaseSuccessDialog();
+                          });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

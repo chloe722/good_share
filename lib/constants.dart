@@ -3,6 +3,18 @@ class Constants {
   static const vagetariantBentoImage = 'image/vagetaian_bento.jpeg';
   static const machaDonutImage = 'image/macha_donut.jpeg';
   static const crossiantImage = 'image/crossiant.jpeg';
+  static const choco_pinapple = 'image/choco_pinapple.jpg';
+  static const cookie = 'image/cookie.jpg';
+  static const mooncake = 'image/moon_cake.jpg';
+  static const pianapple = 'image/pianapple.jpg';
+  static const macaron = 'image/macaron.jpg';
+
+
+  static const chocoPianaappleCake= 'Choco Pineapple cake';
+  static const mooncakeTitle= 'Mooncake';
+  static const macaronTitle= 'MacaronTitle';
+  static const cookieTitle = 'Cookie';
+  static const pineappleTitle = 'Pineapple';
 
   static const salmonRiceBall = 'Salmon Rice ball';
 

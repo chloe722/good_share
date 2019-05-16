@@ -27,6 +27,7 @@ dependencies:
   rxdart: ^0.21.0
   snaplist: 0.1.8
   signature: 2.0.0
+  flutter_charts: 0.1.10
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +75,8 @@ flutter:
     - image/cake.jpg
     - image/sale_chart.jpg
     - image/signature.png
-    - image/support.png
+    - image/chatbot.png
+    - image/logo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

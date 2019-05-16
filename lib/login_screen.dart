@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -22,8 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image(
-              image: AssetImage('image/logo_goodshare.png'),
+              width: 150.0,
+              height: 150.0,
+              image: AssetImage('image/logo.png'),
             ),
+            SizedBox(height: 100.0),
             LoginButton(title: 'Login as Buyer', buttonColor: Colors.amber[200], textColor: Colors.grey[700], context: context, isBuyerScreen: true,),
             SizedBox(height: 30.0),
             LoginButton(title: 'Login as Seller', buttonColor: Colors.pink[200], textColor: Colors.grey[700], context: context, isBuyerScreen: false,)
@@ -55,7 +59,10 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 50.0,
+      width: MediaQuery.of(context).size.width * 0.7,
       child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         color: buttonColor,
         textColor: textColor,
         onPressed: () {
@@ -66,7 +73,7 @@ class LoginButton extends StatelessWidget {
             _loginAsSeller();
           }
         },
-          child: Text('Login in as buyer')),
+          child: Text('$title')),
     );
   }
 }

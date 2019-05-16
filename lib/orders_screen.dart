@@ -43,46 +43,49 @@ class OrderItem extends StatelessWidget {
     final collection = order.collectionTime == null
         ? null
         : Text('Collected ${order.collectionTime.toString()}');
-    return Column(
-      children: <Widget>[
-        ListTile(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => CommonScaffold(
-                  child: OrderDetailScreen(order: order),
-                )));
-          },
-          leading: Text(
-            order.number,
-            style: TextStyle(fontWeight: FontWeight.bold, decoration: decoration),
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => CommonScaffold(
+                    child: OrderDetailScreen(order: order),
+                  )));
+            },
+            leading: Text(
+              order.number,
+              style: TextStyle(fontWeight: FontWeight.bold, decoration: decoration),
+            ),
+            trailing: Text("NTD\$ ${order.total}"),
+            title: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: order.items
+                    .map((item) => Container(
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          '${item.quantity} x ${item.item.name}',
+                          style: TextStyle(decoration: decoration),
+                        ),
+                      ],
+                    )))
+                    .toList()),
+            subtitle: collection,
           ),
-          trailing: Text("NTD\$${order.total}"),
-          title: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: order.items
-                  .map((item) => Container(
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        '${item.quantity} x ${item.item.name}',
-                        style: TextStyle(decoration: decoration),
-                      ),
-                    ],
-                  )))
-                  .toList()),
-          subtitle: collection,
-        ),
+          Container(
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Divider(
+              height: 1.0,
+              color: Colors.grey[700],
+            ),
+          )
 
-        Container(
-          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-          child: Divider(
-            height: 1.0,
-            color: Colors.grey[700],
-          ),
-        )
-
-      ]
+        ]
+      ),
     );
   }
 }
