@@ -6,8 +6,35 @@ class ConsultChatbot extends StatefulWidget {
 }
 
 class _ConsultChatbotState extends State<ConsultChatbot> {
-
   final TextEditingController _textController = new TextEditingController();
+  final messagesSource = <Widget>[
+    UserMessenging(
+      messenge: 'Hi',
+      width: 100.0,
+    ),
+    BotMessenging(
+      messenge: 'Hi, what can I help you?',
+      width: 170.0,
+    ),
+    UserMessenging(
+      messenge: 'I\m looking for accounting course for starting business',
+      width: 200.0,
+    ),
+    BotMessenging(
+      messenge:
+          'Here is the course I can find for you:\n https://alison.com/tag/accounting',
+      width: 200.0,
+    ),
+    UserMessenging(
+      messenge: 'Thank you',
+      width: 100.0,
+    ),
+    BotMessenging(
+      messenge: 'No probram,anything else I can help you?',
+      width: 150.0,
+    ),
+  ];
+  final List<Widget> messages = [];
 
   Widget _buildTextComposer() {
     return new IconTheme(
@@ -20,15 +47,13 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
               child: new TextField(
                 controller: _textController,
                 decoration:
-                new InputDecoration.collapsed(hintText: "Send a message"),
+                    new InputDecoration.collapsed(hintText: "Send a message"),
               ),
             ),
             new Container(
               margin: new EdgeInsets.symmetric(horizontal: 4.0),
-              child: new IconButton(
-                  icon: new Icon(Icons.send),
-                  onPressed: () {}
-                  ),
+              child:
+                  new IconButton(icon: new Icon(Icons.send), onPressed: () {}),
             ),
           ],
         ),
@@ -36,30 +61,34 @@ class _ConsultChatbotState extends State<ConsultChatbot> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+
+    for (var i = 0; i < messagesSource.length; i++) {
+      final msg = messagesSource[i];
+      Future.delayed(Duration(seconds: i * 2)).then((_) {
+        setState(() {
+          messages.insert(0, msg);
+        });
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       reverse: true,
-      children: <Widget>[
+      children: [
         Divider(height: 1.0),
         Container(
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),
           child: _buildTextComposer(),
-        ),
-        BotMessenging(messenge: 'No probram,anything else I can help you?', width: 150.0,),
-        UserMessenging(messenge: 'Thank you', width: 100.0,),
-        BotMessenging(messenge: 'Here is the course I can find for you:\n https://alison.com/tag/accounting', width: 200.0,),
-        UserMessenging(messenge: 'I\m looking for accounting course for starting business', width: 200.0,),
-        BotMessenging(messenge: 'Hi, what can I help you?', width: 170.0,),
-        UserMessenging(messenge: 'Hi', width: 100.0,),
-//        UserMessenging(messenge: 'Hi'),
-
-      ],
+        )
+      ]..addAll(messages),
     );
   }
 }
-
 
 class BotMessenging extends StatelessWidget {
   final String messenge;
@@ -80,7 +109,11 @@ class BotMessenging extends StatelessWidget {
               Container(
                 width: 60.0,
                 height: 60.0,
-                decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage('image/chatbot.png'), fit: BoxFit.cover)),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage('image/chatbot.png'),
+                        fit: BoxFit.cover)),
               ),
               Text('Support')
             ],
@@ -89,9 +122,12 @@ class BotMessenging extends StatelessWidget {
           Container(
             width: width,
             padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.amber[300]),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.amber[300]),
             child: Text(
-              messenge, style: TextStyle(color: Colors.grey[700]),
+              messenge,
+              style: TextStyle(color: Colors.grey[700]),
             ),
           )
         ],
@@ -115,12 +151,15 @@ class UserMessenging extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-              Container(
+            Container(
               width: width,
               padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.amber[300]),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.amber[300]),
               child: Text(
-                messenge, style: TextStyle(color: Colors.grey[700], fontSize: 18.0),
+                messenge,
+                style: TextStyle(color: Colors.grey[700], fontSize: 18.0),
               ),
             ),
             SizedBox(width: 20.0),
@@ -130,7 +169,11 @@ class UserMessenging extends StatelessWidget {
                 Container(
                   width: 60.0,
                   height: 60.0,
-                  decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: AssetImage('image/avatar.jpg'), fit: BoxFit.cover)),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage('image/avatar.jpg'),
+                          fit: BoxFit.cover)),
                 ),
                 Text('You')
               ],
