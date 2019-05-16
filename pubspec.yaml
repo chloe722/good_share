@@ -74,6 +74,7 @@ flutter:
     - image/cake.jpg
     - image/sale_chart.jpg
     - image/signature.png
+    - image/support.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
