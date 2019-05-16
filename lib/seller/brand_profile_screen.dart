@@ -5,6 +5,10 @@ import 'package:good_share/review.dart';
 import 'package:good_share/seller/seller_profile_screen.dart';
 
 class BrandProfile extends StatelessWidget {
+  final bool isSellerView;
+
+  BrandProfile({this.isSellerView});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +35,7 @@ class BrandProfile extends StatelessWidget {
                           image: AssetImage('image/dessert_banner.jpg'),
                         ),
 
-                        Align(
+                        !isSellerView? Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding:
@@ -55,7 +59,7 @@ class BrandProfile extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
+                        ) : Container(),
                       ],
                     ),
 
@@ -78,7 +82,16 @@ class BrandProfile extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-              child: Text('Story', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+              child: Row(
+                children: <Widget>[
+                  Text('Story', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  SizedBox(width: 5.0),
+                  isSellerView? IconButton(
+                    icon: Icon(Icons.edit, color: Colors.pink[400]),
+                    onPressed: (){print('editing');},
+                  ) : Container(),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
@@ -86,7 +99,16 @@ class BrandProfile extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-              child: Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+              child: Row(
+                children: <Widget>[
+                  Text('Achievement', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  SizedBox(width: 5.0),
+                  isSellerView? IconButton(
+                    icon: Icon(Icons.edit, color: Colors.pink[400]),
+                    onPressed: (){print('editing');},
+                  ) : Container(),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
@@ -94,7 +116,16 @@ class BrandProfile extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-              child: Text('Media report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+              child: Row(
+                children: <Widget>[
+                  Text('Media report', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.grey[600])),
+                  SizedBox(width: 5.0),
+                  isSellerView? IconButton(
+                    icon: Icon(Icons.edit, color: Colors.pink[400]),
+                    onPressed: (){print('editing');},
+                  ) : Container(),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),

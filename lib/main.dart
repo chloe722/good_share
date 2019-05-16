@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_share/buyer_screen.dart';
+import 'package:good_share/login_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pinkAccent[300],
       ),
-      home: BuyerScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -57,7 +57,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       left: MediaQuery.of(context).size.width * 0.05,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile(isSellerView: false)));
                         },
                         child: Row(
                           children: <Widget>[
@@ -76,7 +76,6 @@ class _DetailScreenState extends State<DetailScreen> {
                           Icon(Icons.map, color: Colors.green[400]),
                           SizedBox(width: 10.0,),
                           Text('No. 107, Section 3, Roosevelt Road,\n Daan District, Taipei, Taiwan'),
-
                         ],
                       )
                   ),
@@ -98,7 +97,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       right: MediaQuery.of(context).size.width * 0.1,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile()
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => BrandProfile(isSellerView: false)
                           ));
                         },
                         child: CircularImage(
@@ -248,7 +247,6 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                       builder: (BuildContext context) {
                         return PurchaseSuccessDialog();
                       });
-
                 },
               ),
             )

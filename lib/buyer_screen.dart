@@ -12,7 +12,6 @@ class _BuyerScreenState extends State<BuyerScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     MapScreen(),
-    OrdersScreen(),
     ProfileScreen(),
   ];
 
@@ -31,8 +30,6 @@ class _BuyerScreenState extends State<BuyerScreen> {
           onTap: _onTabTapped,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('Map')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list), title: Text('Orders')),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person), title: Text('Profile')),
           ]),

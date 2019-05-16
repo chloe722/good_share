@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:good_share/constants.dart';
 
 class OwnerProfile extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

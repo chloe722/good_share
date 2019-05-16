@@ -15,33 +15,37 @@ final List<OrderModel> ordersFixtures = [
   OrderModel(location: location, number: '1011', collectionTime: null, items: [
     OrderItemModel(
         item: ItemModel(
-            name: 'Bread',
+            name: 'cake',
             price: 10.0,
             expiryTime: '10 : 00 : 20',
-            remaining: 10),
+            remaining: 10,
+            image: 'image/cake.jpg'),
         quantity: 2),
     OrderItemModel(
         item: ItemModel(
-            name: 'Butter',
+            name: 'chocolate pinapple',
             price: 10.0,
             expiryTime: '10 : 00 : 20',
-            remaining: 10),
+            remaining: 10,
+            image: 'image/choco_pinapple.jpg'),
         quantity: 2),
     OrderItemModel(
         item: ItemModel(
-            name: 'Milk',
+            name: 'Cookie',
             price: 10.0,
             expiryTime: '10 : 00 : 20',
-            remaining: 10),
+            remaining: 10,
+            image: 'image/cookie.jpg'),
         quantity: 2),
   ]),
   OrderModel(location: location, number: '1010', collectionTime: null, items: [
     OrderItemModel(
         item: ItemModel(
-            name: 'Bread',
+            name: 'Pinapple',
             price: 10.0,
             expiryTime: '10 : 00 : 20',
-            remaining: 10),
+            remaining: 10,
+            image: 'image/pianapple.jpg'),
         quantity: 2)
   ]),
   OrderModel(
@@ -51,10 +55,11 @@ final List<OrderModel> ordersFixtures = [
       items: [
         OrderItemModel(
             item: ItemModel(
-                name: 'Bread',
+                name: 'Macaron',
                 price: 10.0,
                 expiryTime: '10 : 00 : 20',
-                remaining: 10),
+                remaining: 10,
+                image: 'image/macaron.jpg'),
             quantity: 2)
       ])
 ];

@@ -12,11 +12,12 @@ class LocationModel {
 }
 
 class ItemModel {
-  ItemModel({this.name, this.remaining, this.expiryTime, this.price});
+  ItemModel({this.name, this.remaining, this.expiryTime, this.price, this.image});
   final String name;
   final String expiryTime;
   final int remaining;
   final double price;
+  final String image;
 }
 
 class GeolocationModel {
